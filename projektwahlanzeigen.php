@@ -1,6 +1,7 @@
 <?php 
 	require "header.php";
 	require "dbconfig.php";
+	require "dbfunctions.php";
 	
 ?>
 
@@ -21,11 +22,11 @@
 	echo "<tr><td>Name</td><td>Erstwunsch</td><td>Zweitwunsch</td><td>Drittwunsch</td><td>Nichtwunsch</td>";
 	foreach($pdo->query($sql) as $row){
 		echo "<tr>";
-			echo "<td align='left'>".$row['name']."</td>";
-			echo "<td align='left'>".$row['erstwunsch']."</td>";
-			echo "<td align='left'>".$row['zweitwunsch']."</td>";
-			echo "<td align='left'>".$row['drittwunsch']."</td>";
-			echo "<td align='left'>".$row['nichtwunsch']."</td>";
+			echo "<td align='left'>".getUserName($row['name'])."</td>";
+			echo "<td align='left'>".getProjektName($row['erstwunsch'])."</td>";
+			echo "<td align='left'>".getProjektName($row['zweitwunsch'])."</td>";
+			echo "<td align='left'>".getProjektName($row['drittwunsch'])."</td>";
+			echo "<td align='left'>".getProjektName($row['nichtwunsch'])."</td>";
 		echo "</tr>";
 	}
 	echo "</table>";	

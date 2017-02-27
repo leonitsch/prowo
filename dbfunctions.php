@@ -15,7 +15,6 @@
 	}
 		
 	
-		
 	function getUserId($name){
 		$pdo = connectDB();
 		$sql = "SELECT id FROM benutzer WHERE username ='".$name."'";
@@ -24,6 +23,26 @@
 		$id = $row[0];
 		return $id;
 	}
+	
+	function getUserName($id){
+		$pdo = connectDB();
+		$sql = "SELECT username FROM benutzer WHERE id =".$id;
+		$res = $pdo->query($sql);
+		$row = $res->fetch();
+		$name = $row[0];
+		return $name;
+	}
+	
+	function getProjektName($id){
+		$pdo = connectDB();
+		$sql = "SELECT name FROM projekte WHERE id =".$id;
+		$res = $pdo->query($sql);
+		$row = $res->fetch();
+		$name = $row[0];
+		return $name;
+	}
+	
+	
 	
 
 	?>
