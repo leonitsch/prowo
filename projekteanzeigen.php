@@ -44,11 +44,12 @@ echo "</form>";
 //Projekttabelle
 $sql = "SELECT * FROM projekte";
 	echo "<table align='center' border='1'>";
-	echo "<tr><td>Name</td><td>Mitglieder</td><td>Min</td><td>Max</td><td>Projektleiter</td><td>Lehrer</td><td>Geschlecht</td>";
+	echo "<tr><td>Name</td><td>min Mitglieder</td><td>max Mitglieder</td><td>Min</td><td>Max</td><td>Projektleiter</td><td>Lehrer</td><td>Geschlecht</td>";
 	foreach($pdo->query($sql) as $row){
 		echo "<tr>";
 			echo "<td align='left'>".$row['name']."</td>";
-			echo "<td align='left'>".$row['mitglieder']."</td>";
+			echo "<td align='left'>".$row['mitgliedermin']."</td>";
+			echo "<td align='left'>".$row['mitgliedermax']."</td>";
 			echo "<td align='left'>".$row['min']."</td>";
 			echo "<td align='left'>".$row['max']."</td>";
 			echo "<td align='left'>".$row['projektleiter']."</td>";

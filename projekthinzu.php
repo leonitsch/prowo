@@ -18,7 +18,7 @@
 				exit();
 			}
 		}
-		$sql = "INSERT INTO projekte VALUES (".$i.",'".$_POST["name"]."',".$_POST["mitglieder"].",".$_POST["min"].",".$_POST["max"].",'".$_POST["leiter"]."','".$_POST["lehrer"]."','"."keineangabe"."')";
+		$sql = "INSERT INTO projekte VALUES (".$i.",'".$_POST["name"]."',".$_POST["mitgliedermin"].",".$_POST["mitgliedermax"].",".$_POST["min"].",".$_POST["max"].",'".$_POST["leiter"]."','".$_POST["lehrer"]."','"."keineangabe"."')";
 		$pdo->query($sql);
 		echo "Das Projekt mit dem Namen '".$_POST["name"]."' wurde erfolgreich eingetragen<br>";
 
@@ -41,8 +41,12 @@
 
 
 	<tr>
-		<td align="left"><label for="bl">Mitglieder</label></td>
-		<td align="left"><input type="number" name="mitglieder" required></td>  
+		<td align="left"><label for="bl">min Mitglieder</label></td>
+		<td align="left"><input type="number" name="mitgliedermin" required></td>  
+	</tr>
+	<tr>
+		<td align="left"><label for="bl">min Mitglieder</label></td>
+		<td align="left"><input type="number" name="mitgliedermax" required></td>  
 	</tr>
 
 
