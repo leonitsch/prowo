@@ -5,5 +5,5 @@ function GetPojekte(){
 	
 	foreach($r in $rows)
 		$r["teilnehmer"] = array();  // leeres array anlegen, kenne die syntax nicht genau.
-	return $rows;
+	return $rows; 
 }
