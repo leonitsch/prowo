@@ -42,8 +42,18 @@
 		return $name;
 	}
 	
-	function getProjektliste(){
-		
+	function getProjektListe(){
+		$pdo = connectDB();
+		//$res = $pdo->query("SELECT * FROM projekte");
+		$pa = array();
+		foreach($pdo->query("SELECT * FROM projekte") as $row){
+			$pa = $row;
+			echo "found" . $pa['name'];
+		}
+		foreach($pa as $row){
+			$row['teilnehmer'] = array();
+		}
+		return $rows;
 	}
 	
 	function getWuensche(){

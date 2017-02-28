@@ -3,6 +3,11 @@
 			
 			<tr>
 				<td>
+					<form action="projektverteilung.php">
+						<input type="submit" name="index" value="Projektverteilung">
+					</form>
+				</td>
+				<td>
 					<form action="projektwahlanzeigen.php">
 						<input type="submit" name="index" value="Projektwahlübersicht">
 					</form>
