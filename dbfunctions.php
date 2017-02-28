@@ -42,6 +42,18 @@
 		return $name;
 	}
 	
+	function getProjektliste(){
+		
+	}
+	
+	function getWuensche(){
+		
+	}
+	
+	function trageEin($projektliste,$schueler,$wunschid){
+			
+	}
+	
 	
 	
 
