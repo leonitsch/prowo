@@ -1,8 +1,8 @@
 <?php
 	function connectDB(){
-		$pdo = new PDO('mysql:host=127.0.0.1;dbname=kkg', "root", "") or die ("connecting to Database failed");
+		// $pdo = new PDO('mysql:host=127.0.0.1;dbname=kkg', "root", "") or die ("connecting to Database failed");
 		// $pdo = new PDO('mysql:host=127.0.0.1;dbname=prowo', "root", "") or die ("connecting to Database failed");
-		// $pdo = new PDO('mysql:host=127.0.0.1;dbname=prowo', "prowo", "12345") or die ("connecting to Database failed");
+		$pdo = new PDO('mysql:host=127.0.0.1;dbname=prowo', "prowo", "12345") or die ("connecting to Database failed");
 		return $pdo;
 	}
 	function getProjektId($name){
@@ -62,6 +62,32 @@
 	
 	function trageEin($projektliste,$schueler,$wunschid){
 			
+	}
+	
+	
+	function dbExists(){
+	
+	}
+	
+	function createDB(){
+	
+	}
+	
+	function tableExists($table){
+		$pdo = connectDB();
+		try{
+			$pdo->query("SELECT * FROM '".$table."'");
+		}catch(Exception $e){
+			return false;
+		}
+		
+		
+	
+	}
+	
+	function createTable($name){
+	
+	
 	}
 	
 	
