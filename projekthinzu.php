@@ -7,7 +7,11 @@
 	<br></br>
 	
 <?php
+
+
+
 	require "dbconfig.php";
+
 
 	if(isset($_POST["name"])){	
 		$i=0;
@@ -18,11 +22,9 @@
 				exit();
 			}
 		}
-		$sql = "INSERT INTO projekte VALUES (".$i.",'".$_POST["name"]."',".$_POST["mitgliedermin"].",".$_POST["mitgliedermax"].",".$_POST["min"].",".$_POST["max"].",'".$_POST["leiter"]."','".$_POST["lehrer"]."','"."keineangabe"."')";
+		$sql = "INSERT INTO projekte VALUES ('','".$_POST["name"]."',".$_POST["mitgliedermin"].",".$_POST["mitgliedermax"].",".$_POST["min"].",".$_POST["max"].",'".$_POST["leiter"]."','".$_POST["lehrer"]."','"."keineangabe"."')";
 		$pdo->query($sql);
 		echo "Das Projekt mit dem Namen '".$_POST["name"]."' wurde erfolgreich eingetragen<br>";
-
-		$i=$i+1;
 	
 	}
 
