@@ -14,10 +14,12 @@
 	
 	echo "Willkommen in der Projektauswahl ".$row[0]."<br></br>";
 
-
-
+	$sqlklassebenutzer = "SELECT klasse FROM benutzer WHERE username LIKE '".$_SESSION['name']."'";
+	$kres = $pdo->query($sqlklassebenutzer);
+	$klassebenutzer = $kres->fetch();
 	
-	
+	echo "Deine Klasse: ".$klassebenutzer[0]."<br></br>";
+		
 	
 	if(isset($_POST['ew'])){	
 		
@@ -53,7 +55,7 @@
 		<td>Erstwunsch:</td> 
 		<td>
 			<?php
-				$sql = "SELECT name FROM projekte";
+			$sql = "SELECT name FROM projekte WHERE min<='".$klassebenutzer["klasse"]."' AND max>='".$klassebenutzer["klasse"]."'";
 				echo "<select name='ew'> ";
 				foreach($pdo->query($sql) as $row){
 				echo "<option>".$row['name']."</option>";
@@ -69,7 +71,7 @@
 		<td>Zweitwunsch:</td> 
 		<td>
 			<?php
-				$sql = "SELECT name FROM projekte";
+			$sql = "SELECT name FROM projekte WHERE min<='".$klassebenutzer["klasse"]."' AND max>='".$klassebenutzer["klasse"]."'";
 				echo "<select name='zw'> ";
 				foreach($pdo->query($sql) as $row){
 				echo "<option>".$row['name']."</option>";
@@ -85,7 +87,7 @@
 		<td>Drittwunsch:</td> 
 		<td>
 			<?php
-				$sql = "SELECT name FROM projekte";
+			$sql = "SELECT name FROM projekte WHERE min<='".$klassebenutzer["klasse"]."' AND max>='".$klassebenutzer["klasse"]."'";
 				echo "<select name='dw'> ";
 				foreach($pdo->query($sql) as $row){
 				echo "<option>".$row['name']."</option>";
@@ -99,7 +101,7 @@
 		<td>Nichtwunsch:</td> 
 		<td>
 			<?php
-				$sql = "SELECT name FROM projekte";
+				$sql = "SELECT name FROM projekte WHERE min<='".$klassebenutzer["klasse"]."' AND max>='".$klassebenutzer["klasse"]."'";
 				echo "<select name='nw'> ";
 				foreach($pdo->query($sql) as $row){
 				echo "<option>".$row['name']."</option>";
