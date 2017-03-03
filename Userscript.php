@@ -44,7 +44,7 @@ $nutzerliste = utf8_decode($nutzerliste);
 $nutzerliste = str_replace("ä","ae",$nutzerliste);
 $nutzerliste = str_replace("ö","oe",$nutzerliste); //? in utf8 Ã¶
 $nutzerliste = str_replace("ü","ue",$nutzerliste);
-
+$nutzerliste = str_replace("?","ss",$nutzerliste);
 
 
 //TODO: Anmeldung funktioniert bei Nutzernamen mir Umlauten nicht
