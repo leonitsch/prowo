@@ -1,8 +1,8 @@
 <?php
 	function connectDB(){
-		// $pdo = new PDO('mysql:host=127.0.0.1;dbname=kkg', "root", "") or die ("connecting to Database failed");
+		$pdo = new PDO('mysql:host=127.0.0.1;dbname=kkg', "root", "") or die ("connecting to Database failed");
 		// $pdo = new PDO('mysql:host=127.0.0.1;dbname=prowo', "root", "") or die ("connecting to Database failed");
-		$pdo = new PDO('mysql:host=127.0.0.1;dbname=prowo', "prowo", "12345") or die ("connecting to Database failed");
+		// $pdo = new PDO('mysql:host=127.0.0.1;dbname=prowo', "prowo", "12345") or die ("connecting to Database failed");
 		return $pdo;
 	}
 	function getProjektId($name){
@@ -42,28 +42,37 @@
 		return $name;
 	}
 	
-	function getProjektListe(){
-		$pdo = connectDB();
-		//$res = $pdo->query("SELECT * FROM projekte");
-		$pa = array();
-		foreach($pdo->query("SELECT * FROM projekte") as $row){
-			$pa = $row;
-			echo "found" . $pa['name'];
-		}
-		foreach($pa as $row){
-			$row['teilnehmer'] = array();
-		}
-		return $rows;
-	}
+
+	//Funktionen für Projektverteilung
 	
-	function getWuensche(){
+		function genBenutzerListe(){
+			$pdo = connectDB();
+			$benutzerliste = array();
+
+			$sql = "SELECT * FROM projektwahl";
+			foreach($pdo->query($sql) as $row){
+				$benutzer = new Benutzer();
+				$benutzer->id = $row["name"];
+				$benutzer->ew = $row["erstwunsch"];
+				$benutzer->zw = $row["zweitwunsch"];
+				$benutzer->dw = $row["drittwunsch"];
+				$benutzer->nw = $row["nichtwunsch"];
+				array_push($benutzerliste,$benutzer);
+			}
+		}
 		
-	}
-	
-	function trageEin($projektliste,$schueler,$wunschid){
-			
-	}
-	
+		function genProjekte(){
+			$pdo = connectDB();
+		
+		}
+
+
+
+
+
+
+
+	//Funktionen für Automatische Datenbankerzeugung
 	
 	function dbExists(){
 	

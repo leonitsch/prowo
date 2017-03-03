@@ -4,6 +4,7 @@
 require "header.php";
 require "dbconfig.php";
 
+
 echo "<FONT SIZE='5'>Projektübersicht</FONT>";
 echo "<br></br>";
 //Löschen vorgang

@@ -6,6 +6,7 @@
 <form action="projektwahl.php" method="POST">
 
 <?php
+
 	
 	$sql = "SELECT vorname FROM benutzer WHERE username LIKE '".$_SESSION['name']."'";
 	$res = $pdo->query($sql);
