@@ -74,7 +74,7 @@ for($i=0;$i<count($nutzerlistearr);$i++){
 	$nutzer = explode(" ",$nutzerlistearr[$i]);
 	if(count($nutzer)==3){
 		//$passwords[$i] = hash("md5",$passwords[$i]);
-		$sql = "INSERT INTO benutzer VALUES (".$i.",'".$nutzer[0]."','".$nutzer[1]."','".$usernames[$i]."','".$passwords[$i]."','".$nutzer[2]."')";
+		$sql = "INSERT INTO benutzer VALUES ('','".$nutzer[0]."','".$nutzer[1]."','".$usernames[$i]."','".$passwords[$i]."','".$nutzer[2]."')";
 		$pdo->query($sql);
 	}
 }
