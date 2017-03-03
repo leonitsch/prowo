@@ -47,7 +47,7 @@
 		<td align="left"><input type="number" name="mitgliedermin" required></td>  
 	</tr>
 	<tr>
-		<td align="left"><label for="bl">min Mitglieder</label></td>
+		<td align="left"><label for="bl">max Mitglieder</label></td>
 		<td align="left"><input type="number" name="mitgliedermax" required></td>  
 	</tr>
 

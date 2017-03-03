@@ -11,6 +11,8 @@
 		public $zw;
 		public $dw;
 		public $nw;
+		public $zuteilung;
+		public $istZugeteilt;
 	}
 	
 	class Projekt{
@@ -32,6 +34,8 @@
 		$benutzer->zw = $row["zweitwunsch"];
 		$benutzer->dw = $row["drittwunsch"];
 		$benutzer->nw = $row["nichtwunsch"];
+		$benutzer->zuteilung = 0;
+		$benutzer->istZugeteilt =false;
 		array_push($benutzerliste,$benutzer);
 	}
 	
@@ -48,8 +52,12 @@
 		array_push($projektliste,$projekt);
 	}
 	
-	$projekt = $projektliste[0];
-	echo $projekt->id;
+	foreach($benutzerliste as $benutzer){
+		echo $benutzer->id."<br></br>";
+		
+	}
+	echo count($benutzerliste);
+	
 	
 
 	
