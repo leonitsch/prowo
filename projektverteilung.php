@@ -22,8 +22,41 @@
 		public $maxmitglieder;
 		public $minklasse;
 		public $maxklasse;
+		public $teilnehmer;
+		
+		//Methoden
 		
 	}
+	
+	function getProjekt($id,$projektliste){
+		foreach($projektliste as $projekt){
+			if($projekt->id == $id){
+				return $projekt;
+			}
+		}
+	}
+	
+	function eintragen($schueler,$projektliste,$id){
+		$projekt = getProjekt($id,$projektliste);
+		// echo $projekt->maxmitglieder." ";
+		// echo $schueler->istZugeteilt."<br>";
+		// echo count($projekt->teilnehmer)." ";
+		
+		if(intval((count($projekt->teilnehmer)) < $projekt->maxmitglieder) && !$schueler->istZugeteilt){ 
+			array_push($projekt->teilnehmer,$schueler);
+			$schueler->zuteilung = $projekt->id;
+			$schueler->istZugeteilt = true;
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
+	
+	
+	
+	
 	
 	$benutzerliste = array();
 	$sql = "SELECT * FROM projektwahl";
@@ -35,9 +68,10 @@
 		$benutzer->dw = $row["drittwunsch"];
 		$benutzer->nw = $row["nichtwunsch"];
 		$benutzer->zuteilung = 0;
-		$benutzer->istZugeteilt =false;
+		$benutzer->istZugeteilt = false;
 		array_push($benutzerliste,$benutzer);
 	}
+	shuffle($benutzerliste);
 	
 	
 	$projektliste = array();
@@ -46,24 +80,74 @@
 		$projekt = new Projekt();
 		$projekt->id = $row["id"];
 		$projekt->minmitglieder = $row["mitgliedermin"];
-		$projekt->maxmitlieder = $row["mitgliedermax"];
+		// echo $row["mitgliedermin"]."||".$row["mitgliedermax"]."<br>";
+		$projekt->maxmitglieder = $row["mitgliedermax"];
+		// echo $projekt->minmitglieder."||".$projekt->maxmitglieder."<br>";
 		$projekt->minklasse = $row["min"];
 		$projekt->maxklasse = $row["max"];
+		$projekt->teilnehmer = array();
 		array_push($projektliste,$projekt);
 	}
 	
 	foreach($benutzerliste as $benutzer){
-		echo $benutzer->id."<br></br>";
+		if(!$benutzer->istZugeteilt){
+			if(eintragen($benutzer,$projektliste,$benutzer->ew)){
+				echo "Benutzer ".getUserName($benutzer->id)." wurde erfolgreich für seinen Erstwunsch ".getProjektName($benutzer->ew)." eingetragen<br>"; 
+			}
+		}
 		
 	}
-	echo count($benutzerliste);
+	
+	foreach($benutzerliste as $benutzer){
+		if(!$benutzer->istZugeteilt){
+			if(eintragen($benutzer,$projektliste,$benutzer->zw)){
+				echo "Benutzer ".getUserName($benutzer->id)." wurde erfolgreich für seinen Zweitwunsch ".getProjektName($benutzer->zw)." eingetragen<br>"; 
+			}
+		}
+		
+	}
+	
+	foreach($benutzerliste as $benutzer){
+		if(!$benutzer->istZugeteilt){
+			if(eintragen($benutzer,$projektliste,$benutzer->dw)){
+				echo "Benutzer ".getUserName($benutzer->id)." wurde erfolgreich für seinen Drittwunsch ".getProjektName($benutzer->dw)." eingetragen<br>"; 
+			}
+		}
+		
+	}
+	
+	$pdo->query("DELETE FROM projektverteilung");
+	
+	foreach($benutzerliste as $benutzer){
+		if($benutzer->istZugeteilt){
+			$sql = "INSERT INTO projektverteilung VALUES ('',".$benutzer->id.",".$benutzer->zuteilung.")";
+			$pdo->query($sql);
+		}
+	}
+	
 	
 	
 
 	
 	
 	
+	echo count($benutzerliste)." Schüler sind bereits veteilt<br></br>";
 	
 	
+	$sql = "SELECT * FROM projektverteilung";
+	echo "<table align='center' border='1'>";
+	echo "<tr><td>Name</td><td>Projekt</td>";
+	foreach($pdo->query($sql) as $row){
+		echo "<tr>";
+			echo "<td align='left'>".getUserName($row['userid'])."</td>";
+			echo "<td align='left'>".getProjektName($row['projektid'])."</td>";
+			
+		echo "</tr>";
+	}
+	echo "</table>";
+
 	require "footer.php";
 ?>
+
+	
+	
