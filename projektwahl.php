@@ -77,6 +77,7 @@
 			<?php
 			$sql = "SELECT name FROM projekte WHERE min<='".$row1["klasse"]."' AND max>='".$row1["klasse"]."'";
 				echo "<select name='ew'> ";
+				echo "<option disabled='disabled' selected>---</option>";
 				foreach($pdo->query($sql) as $row){
 				echo "<option>".$row['name']."</option>";
 			}
@@ -93,6 +94,7 @@
 			<?php
 			$sql = "SELECT name FROM projekte WHERE min<='".$row1["klasse"]."' AND max>='".$row1["klasse"]."'";
 				echo "<select name='zw'> ";
+				echo "<option disabled='disabled' selected>---</option>";
 				foreach($pdo->query($sql) as $row){
 				echo "<option>".$row['name']."</option>";
 			}
@@ -109,6 +111,7 @@
 			<?php
 			$sql = "SELECT name FROM projekte WHERE min<='".$row1["klasse"]."' AND max>='".$row1["klasse"]."'";
 				echo "<select name='dw'> ";
+				echo "<option disabled='disabled' selected>---</option>";
 				foreach($pdo->query($sql) as $row){
 				echo "<option>".$row['name']."</option>";
 			}
@@ -123,6 +126,7 @@
 			<?php
 				$sql = "SELECT name FROM projekte WHERE min<='".$row1["klasse"]."' AND max>='".$row1["klasse"]."'";
 				echo "<select name='nw'> ";
+				echo "<option disabled='disabled' selected>---</option>";
 				foreach($pdo->query($sql) as $row){
 				echo "<option>".$row['name']."</option>";
 			}

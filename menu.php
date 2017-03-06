@@ -18,12 +18,12 @@
 					</form>
 				<td>
 					<form action="projekthinzu.php">
-						<input type="submit" name="projekthinzu" value="Projekt Hinzufügen">
+						<input type="submit" name="projekthinzu" value="Projekt hinzufügen">
 					</form>
 				</td>
 				<td>
 					<form action="Userscript.php">
-						<input type="submit" name="Userscript" value="Anmeldedaten erzeugen">
+						<input type="submit" name="Userscript" value="Anmeldedaten">
 					</form>
 				</td>
 				<td>

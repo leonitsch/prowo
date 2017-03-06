@@ -29,6 +29,7 @@ echo "<form action='projekteanzeigen.php' method='POST'>";
 //TODO: als Funktion in header einbinden
 $sql = "SELECT name FROM projekte";
 			echo "<select name='projekt'> ";
+			echo "<option disabled='disabled' selected>---</option>";
 			foreach($pdo->query($sql) as $row){
 			echo "<option>".$row['name']."</option>";
 	

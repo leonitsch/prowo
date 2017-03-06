@@ -94,12 +94,12 @@
 	</tr>
 	<tr>
 	<td>
-	<label for="maennl">maennlich</label> 
-	<input type="radio" id="m�nnl" name="geschlecht" value="0"> 
+		<label for="maennl">maennlich</label> 
+		<input type="radio" id="m�nnl" name="geschlecht" value="0"> 
 	</td>
 	<td>
-	<label for="weibl">weiblich</label> 
-	<input type="radio" id="weibl" name="geschlecht" value="1">
+		<label for="weibl">weiblich</label> 
+		<input type="radio" id="weibl" name="geschlecht" value="1">
 	</td>
 	<tr>
 
