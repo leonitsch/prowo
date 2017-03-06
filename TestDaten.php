@@ -25,9 +25,9 @@
 	
 	
 	$projektdaten = array(
-			array("Tanzen",2,8,5,11,"Leon","Kopp","keineangabe"),
-			array("Singen",10,20,5,7,"Georg","Kopp","keineangabe"),
-			array("Malen",10,20,5,8,"Gregor","Kopp","keineangabe"),
+			array("Tanzen",2,3,5,11,"Leon","Kopp","keineangabe"),
+			array("Singen",1,3,5,7,"Georg","Kopp","keineangabe"),
+			array("Malen",2,3,5,8,"Gregor","Kopp","keineangabe"),
 			array("Minecraft",10,20,5,8,"Julius","Kopp","keineangabe"),
 			array("Programmieren",10,20,5,11,"Erik","Kopp","keineangabe"),
 			array("Skaten",10,20,5,11,"Leon","Michel","keineangabe"),
@@ -72,18 +72,18 @@
 			
 	$projektwahldaten = array(
 			array($userids[0],$projektids[0],$projektids[1],$projektids[2],$projektids[3]),
-			array($userids[1],$projektids[0],$projektids[4],$projektids[3],$projektids[8]),
-			array($userids[2],$projektids[0],$projektids[5],$projektids[7],$projektids[9]),
-			array($userids[3],$projektids[0],$projektids[7],$projektids[3],$projektids[2]),
-			array($userids[4],$projektids[0],$projektids[11],$projektids[12],$projektids[6]),
-			array($userids[5],$projektids[0],$projektids[3],$projektids[4],$projektids[7]),
-			array($userids[6],$projektids[0],$projektids[6],$projektids[10],$projektids[8]),
-			array($userids[7],$projektids[0],$projektids[15],$projektids[14],$projektids[9]),
-			array($userids[8],$projektids[0],$projektids[6],$projektids[11],$projektids[5]),
-			array($userids[9],$projektids[0],$projektids[14],$projektids[2],$projektids[4]),
-			array($userids[10],$projektids[0],$projektids[14],$projektids[2],$projektids[4]),
-			array($userids[11],$projektids[0],$projektids[14],$projektids[2],$projektids[4]),
-			array($userids[12],$projektids[0],$projektids[14],$projektids[2],$projektids[4])
+			array($userids[1],$projektids[0],$projektids[1],$projektids[2],$projektids[8]),
+			array($userids[2],$projektids[0],$projektids[1],$projektids[2],$projektids[9]),
+			array($userids[3],$projektids[0],$projektids[1],$projektids[2],$projektids[2]),
+			array($userids[4],$projektids[0],$projektids[1],$projektids[2],$projektids[6]),
+			array($userids[5],$projektids[0],$projektids[1],$projektids[2],$projektids[7]),
+			array($userids[6],$projektids[0],$projektids[1],$projektids[2],$projektids[8]),
+			array($userids[7],$projektids[0],$projektids[1],$projektids[2],$projektids[9]),
+			array($userids[8],$projektids[0],$projektids[1],$projektids[2],$projektids[5]),
+			array($userids[9],$projektids[0],$projektids[1],$projektids[2],$projektids[4]),
+			array($userids[10],$projektids[0],$projektids[1],$projektids[2],$projektids[4]),
+			array($userids[11],$projektids[0],$projektids[1],$projektids[2],$projektids[4]),
+			array($userids[12],$projektids[0],$projektids[1],$projektids[2],$projektids[4])
 			);
 	
 

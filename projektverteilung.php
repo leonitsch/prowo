@@ -57,7 +57,7 @@
 	
 	
 	
-	
+
 	$benutzerliste = array();
 	$sql = "SELECT * FROM projektwahl";
 	foreach($pdo->query($sql) as $row){
@@ -88,11 +88,13 @@
 		$projekt->teilnehmer = array();
 		array_push($projektliste,$projekt);
 	}
-	
+if(isset($_POST['bestaetigung'])){	
+
+	$pdo->query("DELETE FROM projektverteilung");
 	foreach($benutzerliste as $benutzer){
 		if(!$benutzer->istZugeteilt){
 			if(eintragen($benutzer,$projektliste,$benutzer->ew)){
-				echo "Benutzer ".getUserName($benutzer->id)." wurde erfolgreich für seinen Erstwunsch ".getProjektName($benutzer->ew)." eingetragen<br>"; 
+				// echo "Benutzer ".getUserName($benutzer->id)." wurde erfolgreich für seinen Erstwunsch ".getProjektName($benutzer->ew)." eingetragen<br>"; 
 			}
 		}
 		
@@ -101,7 +103,7 @@
 	foreach($benutzerliste as $benutzer){
 		if(!$benutzer->istZugeteilt){
 			if(eintragen($benutzer,$projektliste,$benutzer->zw)){
-				echo "Benutzer ".getUserName($benutzer->id)." wurde erfolgreich für seinen Zweitwunsch ".getProjektName($benutzer->zw)." eingetragen<br>"; 
+				// echo "Benutzer ".getUserName($benutzer->id)." wurde erfolgreich für seinen Zweitwunsch ".getProjektName($benutzer->zw)." eingetragen<br>"; 
 			}
 		}
 		
@@ -110,13 +112,29 @@
 	foreach($benutzerliste as $benutzer){
 		if(!$benutzer->istZugeteilt){
 			if(eintragen($benutzer,$projektliste,$benutzer->dw)){
-				echo "Benutzer ".getUserName($benutzer->id)." wurde erfolgreich für seinen Drittwunsch ".getProjektName($benutzer->dw)." eingetragen<br>"; 
+				// echo "Benutzer ".getUserName($benutzer->id)." wurde erfolgreich für seinen Drittwunsch ".getProjektName($benutzer->dw)." eingetragen<br>"; 
 			}
 		}
 		
 	}
 	
-	$pdo->query("DELETE FROM projektverteilung");
+	foreach($benutzerliste as $benutzer){
+		if(!$benutzer->istZugeteilt){
+			$projekt = $projektliste[rand(0,count($benutzerliste)-1)]->id;
+			while(($projekt == $benutzer->nw) || !eintragen($benutzer,$projektliste,$projekt)){
+				$projekt += 1;
+			}
+			// echo "Benutzer ".getUserName($benutzer->id)." wurde zufällig in das Projekt ".getProjektName($projekt)." eingetragen<br>"; 
+		}
+	}
+}
+	
+	
+	
+	
+	
+	
+	
 	
 	foreach($benutzerliste as $benutzer){
 		if($benutzer->istZugeteilt){
@@ -128,7 +146,11 @@
 	
 	
 
-	
+	echo "<form action='projektverteilung.php' method='POST'>";
+	echo "<label for='bestaetigung'>Neuverteilung bestätigen</label>";
+	echo "<input type='radio' name='bestaetigung' value='ja'><br></br>";
+	echo "<input type='submit' name='absenden' value='Schüler Verteilen'>";
+	echo "</form>";
 	
 	
 	echo count($benutzerliste)." Schüler sind bereits veteilt<br></br>";
